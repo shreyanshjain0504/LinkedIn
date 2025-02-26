@@ -9,6 +9,10 @@ function togglePopup() {
     overlay.classList.toggle('show');
 }
 
+const setupEventListeners = () => {
+    window.onload = loadData;
+}
+
 function change(type) {
     document.querySelector('input#company').setAttribute('placeholder', type == 'ed' ? 'Enter your College' : 'Enter your Company');
     document.querySelector('input#position').setAttribute('placeholder', type == 'ed' ? 'Enter your Branch' : 'Enter your Position');
@@ -18,36 +22,7 @@ function change(type) {
     document.querySelector('.btn-submit').setAttribute('onclick', type == 'ed' ? 'createEducation()' : 'creatreExperience()');
 }
 
-/* Interface */
-class SectionBuilder {
-    // all abstract methods
-    setType(type) {}
-
-    setCollege(college) {}
-
-    setBranch(branch) {}
-
-    setPosition(postition) {}
-
-    setCompany(company) {}
-
-    setFrom(from) {}
-
-    setTo(to) {}
-
-    setDesc(desc) {}
-
-    setTime(time) {}
-
-    getSection() {}
-}
-
-
-  class ConcreteSectionBuilder extends SectionBuilder {
-    constructor() {
-      super()
-    }
-  
+  class ConcreteSectionBuilder  {
     setType(type) {
         this.type = type;
         return this;
@@ -98,16 +73,6 @@ class SectionBuilder {
     }
   }
 
-  class Section {
-    render() {
-      // make create divs and push it to the respective divs
-      renderExperience();
-      renderEducation();
-      renderSkills();
-    }
-  }
-
-
 const ProfileManager = (() => {  
     const elements = {
         experienceContainer: document.querySelector('.experience'),
@@ -123,9 +88,15 @@ const ProfileManager = (() => {
         name: skill
     });
 
-    const saveData = () => {
+    const saveDataExperience = () => {
         localStorage.setItem('experience', JSON.stringify(this.experienceList));
+    };
+
+    const saveDataEducation = () => {
         localStorage.setItem('education', JSON.stringify(this.educationList));
+    };
+
+    const saveDataSkills = () => {
         localStorage.setItem('skills', JSON.stringify(this.skillList));
     };
 
@@ -138,12 +109,19 @@ const ProfileManager = (() => {
 
     // Render functions
     const renderAll = () => {
-        renderExperience();
-        renderEducation();
-        renderSkills();
+        renderExperienceAll();
+        renderEducationAll();
+        renderSkillsAll();
     };
 
-    const renderExperience = () => {
+    /* add just one divs to the div and don't re-render div */ 
+    const renderSkills = (skill) => {
+        elements.skillsContainer.innerHTML += `<a class="skills-btn">${skill.name}</a>`;
+    }
+
+
+    /* renderAll lists at refresh */
+    const renderExperienceAll = () => {
         elements.experienceContainer.innerHTML = '';
         this.experienceList.forEach(exp => { 
             elements.experienceContainer.innerHTML += `
@@ -162,7 +140,7 @@ const ProfileManager = (() => {
         });
     };
 
-    const renderEducation = () => {
+    const renderEducationAll = () => {
         elements.educationContainer.innerHTML = '';
         this.educationList.forEach(ed => {
             elements.educationContainer.innerHTML += `
@@ -181,7 +159,7 @@ const ProfileManager = (() => {
         });
     };
 
-    const renderSkills = () => {
+    const renderSkillsAll = () => {
         elements.skillsContainer.innerHTML = '';
         this.skillList.forEach(skill => {
             elements.skillsContainer.innerHTML += `<a class="skills-btn">${skill.name}</a>`;
@@ -202,8 +180,8 @@ const ProfileManager = (() => {
             .setType("experience") 
             .getSection()
         this.experienceList.unshift(exp);
-        saveData();
-        renderExperience();
+        saveDataExperience();
+        renderExperienceAll();
     };
 
     const handleEducationCreation = () => {
@@ -220,8 +198,8 @@ const ProfileManager = (() => {
             .getSection()
 
         this.educationList.unshift(ed);
-        saveData();
-        renderEducation();
+        saveDataEducation();
+        renderEducationAll();
     };
 
     const handleSkillCreation = () => {
@@ -234,8 +212,8 @@ const ProfileManager = (() => {
         const newSkill = SkillFactory(skillName);
         this.skillList.push(newSkill);
         elements.inputSkill.value = '';
-        saveData();
-        renderSkills();
+        saveDataSkills();
+        renderSkills(newSkill);
     };
 
     const handleRemoveItem = (event) => {
@@ -243,7 +221,8 @@ const ProfileManager = (() => {
         const id = event.target.getAttribute('data-id');
         experienceList = this.experienceList.filter(exp => exp.time != id);
         educationList = this.educationList.filter(ed => ed.time != id);
-        saveData();
+        saveDataEducation();
+        saveDataExperience();
         renderAll();
     };
 
@@ -273,162 +252,3 @@ const ProfileManager = (() => {
 
 // Initialize the Profile Manager
 window.onload = ProfileManager.init;
-
-
-
-
-
-
-
-
-// class ProfileManager {  
-//     constructor() {
-//         this.experienceContainer = document.querySelector('.experience'),
-//         this.educationContainer = document.querySelector('.education'),
-//         this.skillsContainer = document.querySelector('.skills'),
-//         this.inputSkill = document.querySelector('.input-for-skills'),
-//         this.submitButton = document.querySelector('.btn-submit')
-//     };
-
-//     /* Factory Method */
-//     static SkillFactory(skill) {
-//         this.type = "skill",
-//         this.name = skill
-//     }
-
-//     static saveData() {
-//         localStorage.setItem('experience', JSON.stringify(this.experienceList));
-//         localStorage.setItem('education', JSON.stringify(this.educationList));
-//         localStorage.setItem('skills', JSON.stringify(this.skillList));
-//     }
-
-//     static loadData() {
-//         this.experienceList = JSON.parse(localStorage.getItem('experience')) || [];
-//         this.educationList = JSON.parse(localStorage.getItem('education')) || [];
-//         this.skillList = JSON.parse(localStorage.getItem('skills')) || [];
-//         this.renderAll();
-//     }
-
-//     // Render functions
-//     static renderAll() {
-//         this.srenderExperience();
-//         this.renderEducation();
-//         this.renderSkills();
-//     }
-
-//     renderExperience = () => {
-//         elements.experienceContainer.innerHTML = '';
-//         this.experienceList.forEach(exp => { 
-//             this.elements.experienceContainer.innerHTML += `
-//                 <div class="profile-desc-row" id="${exp.time}">
-//                     <img src="images/tekion.png" height="120px" alt="${exp.company}">
-//                     <div>
-//                         <h3>${exp.company}</h3>
-//                         <b>${exp.position}</b>
-//                         <b>${exp.from} - ${exp.to}</b>
-//                         <p>${exp.desc}</p>
-//                         <hr>
-//                     </div>
-//                     <button class="remove-btn" data-id="${exp.time}">Remove</button>
-//                 </div>
-//             `;
-//         });
-//     };
-
-//     renderEducation = () => {
-//         elements.educationContainer.innerHTML = '';
-//         this.educationList.forEach(ed => {
-//             this.elements.educationContainer.innerHTML += `
-//                 <div class="profile-desc-row" id="${ed.time}">
-//                     <img src="images/nitraipur.png" alt="">
-//                     <div>
-//                         <h3>${ed.college}</h3>
-//                         <b>${ed.branch}</b>
-//                         <b>${ed.from} - ${ed.to}</b>
-//                         <p>${ed.desc}</p>
-//                         <hr>
-//                     </div>
-//                     <button class="remove-btn" data-id="${ed.time}">Remove</button>
-//                 </div>
-//             `;
-//         });
-//     };
-
-//     renderSkills = () => {
-//         elements.skillsContainer.innerHTML = '';
-//         this.skillList.forEach(skill => {
-//             this.elements.skillsContainer.innerHTML += `<a class="skills-btn">${skill.name}</a>`;
-//         });
-//     };
-
-//     // Event handlers
-//     handleExperienceCreation = () => {
-//         /* Builder method */
-//         const sectionBuilder = new ConcreteSectionBuilder()
-//         const exp = sectionBuilder
-//             .setPosition(document.querySelector('#position').value)
-//             .setCompany(document.querySelector('#company').value)
-//             .setFrom(document.querySelector('#from').value)
-//             .setTo(document.querySelector('#to').value)
-//             .setDesc(document.querySelector('#desc').value) 
-//             .setTime(Date.now())
-//             .setType("experience") 
-//             .getSection()
-//         this.experienceList.unshift(exp);
-//         this.saveData();
-//         this.renderExperience();
-//     };
-
-//     handleEducationCreation = () => {
-//         /* Builder method */
-//         const sectionBuilder = new ConcreteSectionBuilder()
-//         const ed = sectionBuilder
-//             .setBranch(document.querySelector('#position').value)
-//             .setCollege(document.querySelector('#company').value)
-//             .setFrom(document.querySelector('#from').value)
-//             .setTo(document.querySelector('#to').value)
-//             .setDesc(document.querySelector('#desc').value) 
-//             .setTime(Date.now())
-//             .setType("education") 
-//             .getSection()
-
-//         this.educationList.unshift(ed);
-//         saveData();
-//         renderEducation();
-//     };
-
-//     handleSkillCreation = () => {
-//         const skillName = elements.inputSkill.value.trim();
-//         if (!skillName) {
-//             alert('Enter a skill first!');
-//             return;
-//         }
-//         /* Factory Method */ 
-//         const newSkill = SkillFactory(skillName);
-//         this.skillList.push(newSkill);
-//         this.elements.inputSkill.value = '';
-//         saveData();
-//         renderSkills();
-//     };
-
-//     handleRemoveItem = (event) => {
-//         if (!event.target.classList.contains('remove-btn')) return;
-//         const id = event.target.getAttribute('data-id');
-//         this.experienceList = this.experienceList.filter(exp => exp.time != id);
-//         this.educationList = this.educationList.filter(ed => ed.time != id);
-//         saveData();
-//         renderAll();
-//     };
-
-    
-
-//     // return {
-//     //     init: loadData,
-//     //     createExperience: handleExperienceCreation,
-//     //     createEducation: handleEducationCreation,
-//     //     createSkills: handleSkillCreation
-//     // };
-// };
-
-// // Initialize the Profile Manager
-// // window.onload = ProfileManager.init;

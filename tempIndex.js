@@ -4,22 +4,23 @@ function toggleMenu() {
     profileMenu.classList.toggle("open-menu");
 }
 
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
+function toggleListMenu() {
+    let dropdown = document.getElementById("myDropdown")
+    dropdown.classList.toggle("show");
 }
 
 function displayDateRange() {
-    const dropdownContentDate = document.querySelector('span.dropdown-date');
-    dropdownContentDate.style.display = (dropdownContentDate.style.display === "block") ? "none" : "block";
+    let dropdownContentDate = document.querySelector('span.dropdown-date')
+    dropdownContentDate.classList.toggle('show-dropdown');
 }
 
 function displaySortOrder() {
-    const dropdownContent = document.querySelector('span.dropdown-content');
-    dropdownContent.style.display = (dropdownContent.style.display === "block") ? "none" : "block";
+    let dropdownContent = document.querySelector('span.dropdown-content')
+    dropdownContent.classList.toggle('show-dropdown');
 }
 
 const setupEventListeners = () => {
-    window.onload = loadData;
+    window.onload = PostModule.loadData;
     document.getElementById('refreshButton').addEventListener('click', handleRefresh);
     window.onclick = handleDropdownClick;
 };
@@ -30,9 +31,13 @@ const handleRefresh = () => {
 };
 
 const handleDropdownClick = (event) => {
+    /* dropping the search menu on outside click */
     if (!event.target.matches('.dropbtn')) {
-        document.querySelectorAll('.dropdown-content').forEach(dropdown => {
-            dropdown.classList.remove('show');
+        let dropdowns = document.querySelectorAll('.dropdown-content')
+        dropdowns.forEach(dropdown => {
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show')
+            }
         });
     }
 };
@@ -49,7 +54,7 @@ list.forEach(item => {
     });
 });
 
-function formatDate(date) {
+function formatDate(date = new Date()) {
     const yyyy = date.getFullYear();
     let mm = date.getMonth() + 1;
     let dd = date.getDate();
@@ -101,45 +106,21 @@ const PostModule = (() => {
             reactions: 0,
             comments: 0
         };
-
         newPostArray.push(newPost);
         saveData();
-        renderAllPosts();
+        renderPost(newPost);  // render just one post 
         document.querySelector('.create-post-input textarea').value = '';
     };
-
-    const createNewDiv = (post) => {
-        let newDiv = document.createElement('div');
-        newDiv.setAttribute("dataDate", post.postTime);
-        newDiv.innerHTML = `
-            <div class="post-author">
-                <img src="images/user-1.png">
-                <div>
-                    <h1>${post.author.name}</h1>
-                    <small>${post.author.designation}</small>
-                    <small>${post.postTime}</small>
-                </div>
-            </div>
-            
-            <p>${post.content}</p>
-            <img src="images/post-image-1.png" width="100%">
-            <div class="post-stats">
-                <div>
-                    <span class="liked-user">${post.reactions} reactions</span>
-                </div>
-                <div>
-                    <span>${post.comments} comments</span>
-                </div>
-            </div>
-        `;
-        return newDiv;
-    }
 
     const renderAllPosts = () => {
         divForPost.innerHTML = '';
         newPostArray.forEach(post => {
             divForPost.appendChild(createPostElement(post));
         });
+    };
+
+    const renderPost = (post) => {
+        divForPost.appendChild(createPostElement(post));
     };
 
     const createPostElement = (post) => {
@@ -192,7 +173,7 @@ const PostModule = (() => {
         divForPost.innerHTML = ''; // Clear the container first
         newPostArray.forEach(post => {
             if (post.author.name === name) {
-                divForPost.appendChild(createNewDiv(post));
+                divForPost.appendChild(createPostElement(post));
             }
         });
     }
@@ -210,6 +191,7 @@ const PostModule = (() => {
 PostModule.init();
 
 const submitButton = document.querySelector('.submit-class');
+console.log(submitButton);
 submitButton.addEventListener('click', PostModule.createPost);
 
 const searchList = document.querySelectorAll('.peoples');

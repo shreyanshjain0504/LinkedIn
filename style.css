@@ -177,6 +177,8 @@ a {
 
 .sidebar-profile-box {
     background: #fff;
+    border-radius: 7px;
+    border: 1px solid grey;
 }
 
 .sidebar-profile-info {
@@ -248,6 +250,8 @@ a {
     padding: 5px 25px;
     margin-top: 12px;   /* give spaces within the sections of the left sidebar */
     margin-bottom: 12px;
+    border-radius: 7px;
+    border: 1px solid grey;
 }
 
 .sidebar-activity h3 {
@@ -383,6 +387,11 @@ a {
     margin-top: 30px;
 }
 
+.post > div {
+    border: 1px solid grey;
+    border-radius: 7px;
+}
+
 .post-author {
     display: flex;
     align-items: flex-start;
@@ -479,6 +488,8 @@ a {
 .sidebar-news {
     background: #fff;
     padding: 10px 25px;
+    border-radius: 7px;
+    border: 1px solid grey;
 }
 
 .info-icon {
@@ -518,6 +529,8 @@ a {
     text-align: center;
     margin: 12px 0;
     font-size: 12px;
+    border-radius: 7px;
+    border: 1px solid grey;
 }
 
 .sidebar-ad img {
@@ -554,7 +567,10 @@ a {
 
 .sidebar-useful-links {
     padding: 15px 25px;
+    background-color: white;
     text-align: center;
+    border-radius: 7px;
+    border: 1px solid grey;
 }
 
 .sidebar-useful-links a {
@@ -635,6 +651,8 @@ a {
 
 .profile-container {
     background: #fff;
+    border-radius: 7px;
+    border: 1px solid grey;
 }
 
 .profile-container-inner {
@@ -708,6 +726,8 @@ a {
     background: #fff;
     padding: 20px 4% 30px;
     margin: 40px 0;
+    border-radius: 7px;
+    border: 1px solid grey;
 }
 
 .profile-description h2 {
@@ -849,6 +869,10 @@ a {
 .show {
     display: block;
     height: 50px;
+}
+
+.show-dropdown {
+    display: block !important;
 }
 
 @keyframes fadeIn {
@@ -996,30 +1020,6 @@ a {
     display: inline-block;
 }
 
-.dropdown-content {
-    display: none;
-    font-size: 8px;
-    background-color: #f1f1f1;;
-    min-width: 100px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    margin-left: 25px;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 6px 8px;
-    text-decoration: none;
-    display: block;
-    font-size: 15px;
-}
-
-.dropdown a:hover {
-    cursor: pointer;
-    background-color: #1469f1;
-}
-
 .show {
     display: block;
 }
@@ -1034,6 +1034,7 @@ a {
     background-color: rgb(92, 146, 161);
     border: 3px;
     color: white;
+    cursor: pointer;
 }
 
 .dropdown-date {
