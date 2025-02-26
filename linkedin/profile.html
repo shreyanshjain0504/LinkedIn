@@ -121,7 +121,7 @@
                 <p>I am Shreyansh Jain, a Computer Science student at NIT Raipur from batch 2025. Currently working as Associate Software Engineer Intern at Tekion Corp. Working in the Accounting team as a FE Intern, I work on developing UIs for the Accounting section.</p>
             </div>
 
-            <button class="add-btn btn-open-popup" onclick="changeToExperience(); togglePopup()">
+            <button class="add-btn btn-open-popup" onclick="change('exp'); togglePopup();">
                 Add Experience
             </button>
             
@@ -132,7 +132,7 @@
                 </div>
             </div>
 
-            <button class="add-btn btn-open-popup" onclick="changeToEducation(); togglePopup()">
+            <button class="add-btn btn-open-popup" onclick="change('ed'); togglePopup()">
                 Add Education
             </button>
 
@@ -147,7 +147,7 @@
                 <h2>Skills</h2>
                 <div style="float: right; margin-top: -30px">
                     <input type="text" class="input-for-skills"></input> 
-                    <button class="add-skills" onclick="createSkills()">
+                    <button class="add-skills" onclick="ProfileManager.createSkills()">
                         +
                     </button>
                 </div>
@@ -156,8 +156,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-<script src="profileJS.js"></script>
+<script src="tempProfileJS.js"></script>
 </body>
 </html>

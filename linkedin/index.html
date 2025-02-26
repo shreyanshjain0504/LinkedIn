@@ -21,11 +21,11 @@
                 <img src="images/search.png">
                 <input type="text" placeholder="Search..." id="search-box" name="search">
                     <div class="dropdown">
-                        <button onclick="myFunction()" class="dropbtn"></button>
+                        <button onclick="toggleListMenu()" class="dropbtn"></button>
                         <div id="myDropdown" class="dropdown-content">
-                        <a class="peoples" href="#" onclick="showAllPostsWithName('Shreyansh Jain')">Shreyansh Jain</a>
-                        <a class="peoples" href="#" onclick="showAllPostsWithName('Divyansh Pandey')">Divyansh Pandey</a>
-                        <a class="peoples" href="#" onclick="showAllPostsWithName('Shubham Yadav')">Shubham Yadav</a>
+                            <a class="peoples" href="#">Shreyansh Jain</a>
+                            <a class="peoples" href="#">Divyansh Pandey</a>
+                            <a class="peoples" href="#">Shubham Yadav</a>
                         </div>  
                     </div>
                 </input>
@@ -115,31 +115,31 @@
                     <li><img src="images/photo.png">Photo</li>
                     <li><img src="images/video.png">Video</li>
                     <li><img src="images/event.png">Event</li>
-                    <li onclick="createPost()">Post</li>
+                    <li class="submit-class">Post</li>
                 </div>
             </div>
 
             <div class="sort-by">
                 <p>Sort by: <span>top <img src="images/down-arrow.png" onclick="displaySortOrder()"></span></p>
                 <span class="dropdown-content" id="myDropdown">
-                    <a href="#" onclick="sortByAscOrder()">Asc</a>
+                    <a href="#">Asc</a>
                     <hr>
-                    <a href="#" onclick="sortByDescOrder()">Desc</a>
+                    <a href="#">Desc</a>
                 </span>
                 <hr>
                 <p>Range: <span>top <img src="images/down-arrow.png" onclick="displayDateRange()"></span></p>
                 <span class="dropdown-date" id="myDropdown-date">
                     <label for="start">
                         Start:
-                        <input type="date" id="start" name="trip-start" value="2025-02-11" min="2018-01-01" max="2025-12-31" />
                     </label>
+                    <input type="date" id="start" name="trip-start" value="2025-02-11" min="2018-01-01" max="2025-12-31" />
                     <hr>
                     <label for="end">
                         End:
-                        <input type="date" id="end" name="trip-end" value="2025-02-11" min="2018-01-01" max="2025-12-31" />
                     </label>
+                    <input type="date" id="end" name="trip-end" value="2025-02-11" min="2018-01-01" max="2025-12-31" />
                     <hr>
-                    <button onclick="showPostsInDateRange()">Submit</button>
+                    <button>Submit</button>
                 </span>
             </div>
 
@@ -190,6 +190,6 @@
         </div>
     </div>
 
-<script src="indexJS.js"></script>
+<script src="tempIndex.js"></script>
 </body>
 </html>
