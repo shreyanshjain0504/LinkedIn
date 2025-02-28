@@ -1,28 +1,28 @@
-function toggleMenu() {
-    /* adds and removes the class name open-menu whenever called */
-    let profileMenu = document.getElementById("profileMenu");
-    profileMenu.classList.toggle("open-menu");
-}
-
-function togglePopup() {
-    const overlay = document.getElementById('popupOverlay');
-    overlay.classList.toggle('show');
-}
-
-const setupEventListeners = () => {
-    window.onload = loadData;
+class ToggleHandler {
+    constructor(props) {}
+    
+    static toggleProfileMenu() {
+        /* adds and removes the class name open-menu whenever called */
+        let profileMenu = document.getElementById("profileMenu");
+        profileMenu.classList.toggle("open-menu");
+    }
+    
+    static togglePopup() {
+        let overlay = document.getElementById('popupOverlay');
+        overlay.classList.toggle('show');
+    }
 }
 
 function change(type) {
-    document.querySelector('input#company').setAttribute('placeholder', type == 'ed' ? 'Enter your College' : 'Enter your Company');
-    document.querySelector('input#position').setAttribute('placeholder', type == 'ed' ? 'Enter your Branch' : 'Enter your Position');
-    document.querySelector('#pos').innerHTML = type == 'ed' ? 'Branch' : 'Position';
-    document.querySelector('#com').innerHTML = type == 'ed' ? 'College' : 'Company';
-    document.querySelector('.btn-submit').innerHTML = type == 'ed' ? 'Add Education' : 'Add Experience';
-    document.querySelector('.btn-submit').setAttribute('onclick', type == 'ed' ? 'createEducation()' : 'creatreExperience()');
+    document.querySelector('input#company').setAttribute('placeholder', (type == 'ed' ? 'Enter your College' : 'Enter your Company'));
+    document.querySelector('input#position').setAttribute('placeholder', (type == 'ed' ? 'Enter your Branch' : 'Enter your Position'));
+    document.querySelector('#pos').innerHTML = (type == 'ed' ? 'Branch' : 'Position');
+    document.querySelector('#com').innerHTML = (type == 'ed' ? 'College' : 'Company');
+    document.querySelector('.btn-submit').innerHTML = (type == 'ed' ? 'Add Education' : 'Add Experience');
+    document.querySelector('.btn-submit').setAttribute('onclick', (type == 'ed' ? 'createEducation()' : 'creatreExperience()'));
 }
 
-  class ConcreteSectionBuilder  {
+class ConcreteSectionBuilder  {
     setType(type) {
         this.type = type;
         return this;
@@ -71,7 +71,7 @@ function change(type) {
     getSection() {
         return this;
     }
-  }
+}
 
 const ProfileManager = (() => {  
     const elements = {
@@ -118,7 +118,6 @@ const ProfileManager = (() => {
     const renderSkills = (skill) => {
         elements.skillsContainer.innerHTML += `<a class="skills-btn">${skill.name}</a>`;
     }
-
 
     /* renderAll lists at refresh */
     const renderExperienceAll = () => {
@@ -216,9 +215,9 @@ const ProfileManager = (() => {
         renderSkills(newSkill);
     };
 
-    const handleRemoveItem = (event) => {
-        if (!event.target.classList.contains('remove-btn')) return;
-        const id = event.target.getAttribute('data-id');
+    const handleRemoveItem = (e) => {
+        if (!e.target.classList.contains('remove-btn')) return;
+        const id = e.target.getAttribute('data-id');
         experienceList = this.experienceList.filter(exp => exp.time != id);
         educationList = this.educationList.filter(ed => ed.time != id);
         saveDataEducation();
@@ -238,10 +237,6 @@ const ProfileManager = (() => {
         }
     });
 
-    document.querySelector('.input-for-skills').addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') handleSkillCreation();
-    });
-
     return {
         init: loadData,
         createExperience: handleExperienceCreation,
@@ -252,3 +247,23 @@ const ProfileManager = (() => {
 
 // Initialize the Profile Manager
 window.onload = ProfileManager.init;
+
+let profileImage = document.querySelector('.nav-profile-img')
+let addSkillBtn = document.querySelector('.add-skills')
+let formCloseBtn = document.querySelector('.btn-close-popup')
+let addBtns = document.querySelectorAll('.add-btn')
+let submitBtn = document.querySelector('.btn-submit')
+let inputSkillBtn = document.querySelector('.input-for-skills')
+
+addSkillBtn.addEventListener('click', ProfileManager.createSkills)
+profileImage.addEventListener('click', ToggleHandler.toggleProfileMenu)
+formCloseBtn.addEventListener('click', ToggleHandler.togglePopup)
+submitBtn.addEventListener('click', ToggleHandler.togglePopup)
+addBtns.forEach(addBtn => {
+    addBtn.addEventListener('click', ToggleHandler.togglePopup)
+    const isExperience = addBtn.textContent.trim() == 'Add Experience'
+    addBtn.addEventListener('click', () => change(isExperience ? 'exp' : 'ed'))
+})
+inputSkillBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') ProfileManager.createSkills();
+});

@@ -19,10 +19,10 @@
             <a href="index.html" class="logo"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png"></a>
             <div class="search-box">
                 <img src="images/search.png">
-                <input type="text" placeholder="Search..." id="search-box" name="search">
+                <input type="text" placeholder="Search..." id="search-box" name="search" onclick="ToggleMenus.toggleListMenu()">
                     <div class="dropdown">
-                        <button onclick="toggleListMenu()" class="dropbtn"></button>
-                        <div id="myDropdown" class="dropdown-content">
+                        <!-- <button onclick="ToggleMenus.toggleListMenu()" class="dropbtn"></button> -->
+                        <div id="myDropdown" class="dropdown-content search-list">
                             <a class="peoples" href="#">Shreyansh Jain</a>
                             <a class="peoples" href="#">Divyansh Pandey</a>
                             <a class="peoples" href="#">Shubham Yadav</a>
@@ -42,7 +42,7 @@
         </div>
         <div class="navbar-right">
             <div class="online">
-                <img src="images/user-1.png" class="nav-profile-img" onclick="toggleMenu()">
+                <img src="images/user-1.png" class="nav-profile-img" onclick="ToggleMenus.toggleProfileMenu()">
             </div>
         </div>
 
@@ -120,14 +120,14 @@
             </div>
 
             <div class="sort-by">
-                <p>Sort by: <span>top <img src="images/down-arrow.png" onclick="displaySortOrder()"></span></p>
+                <p>Sort by: <span>top <img src="images/down-arrow.png" onclick="ToggleMenus.displaySortOrder()"></span></p>
                 <span class="dropdown-content" id="myDropdown">
                     <a href="#">Asc</a>
                     <hr>
                     <a href="#">Desc</a>
                 </span>
                 <hr>
-                <p>Range: <span>top <img src="images/down-arrow.png" onclick="displayDateRange()"></span></p>
+                <p>Range: <span>top <img src="images/down-arrow.png" onclick="ToggleMenus.displayDateRange()"></span></p>
                 <span class="dropdown-date" id="myDropdown-date">
                     <label for="start">
                         Start:
@@ -139,7 +139,7 @@
                     </label>
                     <input type="date" id="end" name="trip-end" value="2025-02-11" min="2018-01-01" max="2025-12-31" />
                     <hr>
-                    <button>Submit</button>
+                    <button class="submit-class-date-sort">Submit</button>
                 </span>
             </div>
 
@@ -190,6 +190,6 @@
         </div>
     </div>
 
-<script src="tempIndex.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
