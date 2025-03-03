@@ -48,18 +48,19 @@
                         name="desc" required>
                 <div class="btn-collection">
                     <button class="btn-submit" 
-                        type="submit" onclick="createExperience(); togglePopup();">
+                        type="submit">
                         Submit Experience
                     </button>
                 </div>
             </form>
             
-            <button class="btn-close-popup" onclick="togglePopup()">
+            <button class="btn-close-popup">
                 Close
             </button>
         </div>
     </div>
 
+    <!-- Navbar  -->
     <nav class="navbar">
         <div class="navbar-left">
             <a href="index.html" class="logo"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png"></a>
@@ -79,7 +80,7 @@
         </div>
         <div class="navbar-right">
             <div class="online">
-                <img src="images/user-1.png" class="nav-profile-img" onclick="toggleMenu()">
+                <img src="images/user-1.png" class="nav-profile-img">
             </div>
         </div>
 
@@ -97,6 +98,7 @@
         </div>
     </nav>
 
+    <!-- Profile page -->
     <div class="container">
         <div class="profile-main">
             <div class="profile-container">
@@ -120,24 +122,22 @@
                 <h2>About</h2>
                 <p>I am Shreyansh Jain, a Computer Science student at NIT Raipur from batch 2025. Currently working as Associate Software Engineer Intern at Tekion Corp. Working in the Accounting team as a FE Intern, I work on developing UIs for the Accounting section.</p>
             </div>
-
-            <button class="add-btn btn-open-popup" onclick="changeToExperience(); togglePopup()">
-                Add Experience
-            </button>
             
             <div class="profile-description">
                 <h2>Experience</h2>
+                <button class="add-btn btn-open-popup">
+                    Add Experience
+                </button>
                 <div class="experience">
                     <!-- Experiences will be shown here -->
                 </div>
             </div>
 
-            <button class="add-btn btn-open-popup" onclick="changeToEducation(); togglePopup()">
-                Add Education
-            </button>
-
             <div class="profile-description">
                 <h2>Education</h2>
+                <button class="add-btn btn-open-popup">
+                    Add Education
+                </button>
                 <div class="education">
                     <!-- Education will be shown here -->
                 </div>
@@ -145,9 +145,9 @@
 
             <div class="profile-description">
                 <h2>Skills</h2>
-                <div style="float: right; margin-top: -30px">
+                <div class="skill-section">
                     <input type="text" class="input-for-skills"></input> 
-                    <button class="add-skills" onclick="createSkills()">
+                    <button class="add-skills">
                         +
                     </button>
                 </div>
@@ -156,8 +156,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-<script src="profileJS.js"></script>
+<script src="profile.js"></script>
 </body>
 </html>
