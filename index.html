@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TekionIn</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media-queries.css">
+</head>
+<body>
+    <!-- Refresh popup -->
+    <div class="popup" id="refreshPopup">
+        <button id="refreshButton">Refresh<img src="images/down-arrow.png"></button>
+    </div>
+
+    <!-- Sticky navbar -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png"></a>
+            <div class="search-box">
+                <img src="images/search.png">
+                <input type="text" placeholder="Search..." id="search-box" name="search">
+                    <div class="dropdown">
+                        <div id="myDropdown" class="dropdown-content search-list">
+                            <a class="peoples" href="#">Shreyansh Jain</a>
+                            <a class="peoples" href="#">Divyansh Pandey</a>
+                            <a class="peoples" href="#">Shubham Yadav</a>
+                        </div>  
+                    </div>
+                </input>
+            </div>
+        </div>
+        <div class="navbar-center">
+            <ul>
+                <li><a href="#" class="active-link"><img src="images/home.png"><span>Home</span></a></li>
+                <li><a href="#"><img src="images/network.png"><span>My Network</span></a></li>
+                <li><a href="#"><img src="images/jobs.png"><span>Jobs</span></a></li>
+                <li><a href="#"><img src="images/message.png"><span>Messages</span></a></li>
+                <li><a href="#"><img src="images/notification.png"><span>Notifications</span></a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="online">
+                <img src="images/user-1.png" class="nav-profile-img">
+            </div>
+        </div>
+
+        <div class="profile-menu-wrap" id="profileMenu">
+            <div class="profile-menu">
+                <div class="user-info">
+                    <img src="images/user-1.png">
+                    <div>
+                        <h3>Shreyansh Jain</h3>
+                        <a href="./profile.html">See your profile</a>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main section -->
+    <div class="container">
+        <!-- left sidebar -->
+        <div class="left-sidebar">
+            <div class="sidebar-profile-box">
+                <img src="images/cover-pic.png" width="100%">
+                <div class="sidebar-profile-info">
+                    <img src="images/user-1.png">
+                    <h1>Shreyansh Jain</h1>
+                    <h3>ASE Intern</h3>
+                    <ul>
+                        <li>Your profile views<span>209</span></li>
+                        <li>Your post views<span>542</span></li>
+                        <li>Your connections<span>2909</span></li>
+                    </ul>
+                </div>
+                <div class="sidebar-profile-link">
+                    <a href="#"><img src="images/items.png">My items</a>
+                    <a href="#"><img src="images/premium.png">Try Premium</a>
+                </div>
+            </div>
+
+            <div class="sidebar-activity">
+                <h3>Recent</h3>
+                <a href="#"><img src="images/recent.png">Web Development</a>
+                <a href="#"><img src="images/recent.png">User Interface</a>
+                <a href="#"><img src="images/recent.png">Learn Online</a>
+                <a href="#"><img src="images/recent.png">Code Better</a>
+                <a href="#"><img src="images/recent.png">Group Learning</a>
+            
+                <h3>Groups</h3>
+                <a href="#"><img src="images/group.png">Web Design Group</a>
+                <a href="#"><img src="images/group.png">HTML & CSS Learners</a>
+                <a href="#"><img src="images/group.png">Python & Javascript Group</a>
+                <a href="#"><img src="images/group.png">Learn Coding Online</a>
+            
+                <h3>Hashtag</h3>
+                <a href="#"><img src="images/hashtag.png">webdevelopment</a>
+                <a href="#"><img src="images/hashtag.png">userinterface</a>
+                <a href="#"><img src="images/hashtag.png">onlinelearning</a>            
+                <hr>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div class="main-content">
+            <div class="create-post">
+                <div class="create-post-input">
+                    <img src="images/user-1.png">
+                    <textarea rows="2" placeholder="Write a post"></textarea>
+                </div>
+                <div class="create-post-links">
+                    <li><img src="images/photo.png">Photo</li>
+                    <li><img src="images/video.png">Video</li>
+                    <li><img src="images/event.png">Event</li>
+                    <li class="submit-class">Post</li>
+                </div>
+            </div>
+
+            <div class="sort-by">
+                <p>Sort by: <span>top <img src="images/down-arrow.png" class="sort-button"></span></p>
+                <span class="dropdown-content" id="myDropdown">
+                    <a href="#">Asc</a>
+                    <hr>
+                    <a href="#">Desc</a>
+                </span>
+                <hr>
+                <p>Range: <span>top <img src="images/down-arrow.png" class="range-button"></span></p>
+                <span class="dropdown-date" id="myDropdown-date">
+                    <label for="start">
+                        Start:
+                    </label>
+                    <input type="date" id="start" name="trip-start" value="2025-02-11" min="2018-01-01" max="2025-12-31" />
+                    <hr>
+                    <label for="end">
+                        End:
+                    </label>
+                    <input type="date" id="end" name="trip-end" value="2025-02-11" min="2018-01-01" max="2025-12-31" />
+                    <hr>
+                    <button class="submit-class-date-sort">Submit</button>
+                </span>
+            </div>
+
+            <div class="post">
+                <!-- Posts will be displayed here  -->
+            </div>
+        </div>
+
+        <!-- right sidebar -->
+        <div class="right-sidebar">
+            <div class="sidebar-news">
+                <img src="https://cdn-icons-png.flaticon.com/512/566/566021.png" class="info-icon" alt="more img">
+                <h3>Trending News</h3>
+                <a href="https://huroorkee.ac.in/blog/high-demand-skills-for-the-next-10-years/#:~:text=Asked%20Questions%20(FAQ)-,1.,emerging%20technologies%20is%20highly%20beneficial.">High demand for skill manpower</a>
+                <span>1d ago ... 10,321 readers</span>
+                <a href="https://www.nucamp.co/blog/coding-bootcamp-india-ind-getting-a-job-in-tech-in-india-in-2025-the-complete-guide">Careers growing horizontally too</a>
+                <span>17h ago ... 5,087 readers</span>
+                <a href="https://www.uscis.gov/working-in-the-united-states/students-and-exchange-visitors/students-and-employment">Less work visa for US, more on UK</a>
+                <span>10h ago ... 8,675 readers</span>
+                
+            </div>
+
+            <div class="sidebar-ad">
+                <small>Ad</small>
+                <p>Master the 5 principles of web design</p>
+                <div>
+                    <img src="images/user-1.png">
+                    <img src="images/mi-logo.png">
+                </div>
+                <b>Brand and Demand in Xiaomi</b>
+                <a href="https://www.mi.com/global/" class="ad-link">Learn More</a>
+            </div>
+
+            <div class="sidebar-useful-links">
+                <a href="https://tekion.com/about-us">About</a>
+                <a href="https://tekion.com/blog">Accessibility</a>
+                <a href="https://tekion.com/trust-portal">Help Center</a>
+                <a href="https://tekion.com/legal/privacy/privacy-policy">Privacy Policy</a>
+                <a href="https://tekion.com/blog/tekion-tv-digital-display-option-from-tekion">Advertising</a>
+                <a href="https://tekion.com/">Get the App</a>
+                <a href="https://tekion.com/">More</a>
+
+                <div class="copyright-msg">
+                    <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png">
+                    <p>TekionIn C 2025. All rights reserved</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/toggleMenus.js"></script>
+    <script src="js/dateOperator.js"></script>
+    <script src="js/postModule.js"></script>
+</body>
+</html>

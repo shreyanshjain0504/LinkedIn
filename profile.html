@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TekionIn</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media-queries.css">
+</head>
+<body>
+
+    <!-- Form layout -->
+    <div id="popupOverlay" 
+         class="overlay-container">
+        <div class="popup-box">
+            <form class="form-container">
+                <label class="form-label" for="position" id="pos">Position/Branch:</label>
+                <input class="form-input" type="text" 
+                       placeholder="Enter Your Position/Branch" 
+                       id="position" name="position" required>
+
+                <label class="form-label" for="company" id="com">Company/University:</label>
+                <input class="form-input"
+                       type="company" 
+                       placeholder="Enter Your Company/University"
+                       id="company" 
+                       name="company" required>
+
+                <label class="form-label" for="from">From:</label>
+                <input class="form-input"
+                        type="from" 
+                        placeholder="From"
+                        id="from" 
+                        name="from" required>
+
+                <label class="form-label" for="to">To:</label>
+                <input class="form-input"
+                        type="to" 
+                        placeholder="To"
+                        id="to" 
+                        name="to" required>
+
+                <label class="form-label" for="desc">Description:</label>
+                <input class="form-input"
+                        type="desc" 
+                        placeholder="Description"
+                        id="desc" 
+                        name="desc" required>
+                <div class="btn-collection">
+                    <button class="btn-submit" 
+                        type="submit">
+                        Submit Experience
+                    </button>
+                </div>
+            </form>
+            
+            <button class="btn-close-popup">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- Navbar  -->
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="index.html" class="logo"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png"></a>
+            <div class="search-box">
+                <img src="images/search.png">
+                <input type="text" placeholder="Search...">
+            </div>
+        </div>
+        <div class="navbar-center">
+            <ul>
+                <li><a href="#" class="active-link"><img src="images/home.png"><span>Home</span></a></li>
+                <li><a href="#"><img src="images/network.png"><span>My Network</span></a></li>
+                <li><a href="#"><img src="images/jobs.png"><span>Jobs</span></a></li>
+                <li><a href="#"><img src="images/message.png"><span>Messages</span></a></li>
+                <li><a href="#"><img src="images/notification.png"><span>Notifications</span></a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <div class="online">
+                <img src="images/user-1.png" class="nav-profile-img">
+            </div>
+        </div>
+
+        <div class="profile-menu-wrap" id="profileMenu">
+            <div class="profile-menu">
+                <div class="user-info">
+                    <img src="images/user-1.png">
+                    <div>
+                        <h3>Shreyansh Jain</h3>
+                        <a href="#">See your profile</a>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile page -->
+    <div class="container">
+        <div class="profile-main">
+            <div class="profile-container">
+                <img src="images/cover-pic.png" width="800px">
+                <div class="profile-container-inner">
+                    <img src="images/user-1.png" class="profile-pic">
+                    <h1>Shreyansh Jain</h1>
+                    <b>ASE Intern at Tekion Corp</b>
+                    <p>Bengaluru, Karnataka, India </p>
+                    <div class="mutual-connection">
+                        <img src="images/user-1.png" alt="">
+                        <span>1 mutual connections: Divyansh Pandey</span>
+                    </div>
+                    <div class="profile-btn">
+                        <a href="#"><img src="images/chat.png">Chat</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-description">
+                <h2>About</h2>
+                <p>I am Shreyansh Jain, a Computer Science student at NIT Raipur from batch 2025. Currently working as Associate Software Engineer Intern at Tekion Corp. Working in the Accounting team as a FE Intern, I work on developing UIs for the Accounting section.</p>
+            </div>
+            
+            <div class="profile-description">
+                <h2>Experience</h2>
+                <button class="add-btn btn-open-popup">
+                    Add Experience
+                </button>
+                <div class="experience">
+                    <!-- Experiences will be shown here -->
+                </div>
+            </div>
+
+            <div class="profile-description">
+                <h2>Education</h2>
+                <button class="add-btn btn-open-popup">
+                    Add Education
+                </button>
+                <div class="education">
+                    <!-- Education will be shown here -->
+                </div>
+            </div>
+
+            <div class="profile-description">
+                <h2>Skills</h2>
+                <div class="skill-section">
+                    <input type="text" class="input-for-skills"></input> 
+                    <button class="add-skills">
+                        +
+                    </button>
+                </div>
+                <div class="skills">
+                    <!-- Skills will be shown here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/toggleHandler.js"></script>
+    <script src="js/profile.js"></script>
+    <script src="js/skillManager.js"></script>
+</body>
+</html>
