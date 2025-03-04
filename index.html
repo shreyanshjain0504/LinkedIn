@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TekionIn</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="media-queries.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/media-queries.css">
 </head>
 <body>
     <!-- Refresh popup -->
@@ -19,9 +19,8 @@
             <a href="index.html" class="logo"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png"></a>
             <div class="search-box">
                 <img src="images/search.png">
-                <input type="text" placeholder="Search..." id="search-box" name="search" onclick="ToggleMenus.toggleListMenu()">
+                <input type="text" placeholder="Search..." id="search-box" name="search">
                     <div class="dropdown">
-                        <!-- <button onclick="ToggleMenus.toggleListMenu()" class="dropbtn"></button> -->
                         <div id="myDropdown" class="dropdown-content search-list">
                             <a class="peoples" href="#">Shreyansh Jain</a>
                             <a class="peoples" href="#">Divyansh Pandey</a>
@@ -42,7 +41,7 @@
         </div>
         <div class="navbar-right">
             <div class="online">
-                <img src="images/user-1.png" class="nav-profile-img" onclick="ToggleMenus.toggleProfileMenu()">
+                <img src="images/user-1.png" class="nav-profile-img">
             </div>
         </div>
 
@@ -120,14 +119,14 @@
             </div>
 
             <div class="sort-by">
-                <p>Sort by: <span>top <img src="images/down-arrow.png" onclick="ToggleMenus.displaySortOrder()"></span></p>
+                <p>Sort by: <span>top <img src="images/down-arrow.png" class="sort-button"></span></p>
                 <span class="dropdown-content" id="myDropdown">
                     <a href="#">Asc</a>
                     <hr>
                     <a href="#">Desc</a>
                 </span>
                 <hr>
-                <p>Range: <span>top <img src="images/down-arrow.png" onclick="ToggleMenus.displayDateRange()"></span></p>
+                <p>Range: <span>top <img src="images/down-arrow.png" class="range-button"></span></p>
                 <span class="dropdown-date" id="myDropdown-date">
                     <label for="start">
                         Start:
@@ -190,6 +189,8 @@
         </div>
     </div>
 
-<script src="index.js"></script>
+    <script src="js/toggleMenus.js"></script>
+    <script src="js/dateOperator.js"></script>
+    <script src="js/postModule.js"></script>
 </body>
 </html>
