@@ -399,7 +399,8 @@ a {
 }
 
 .post-author img {
-    width: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 10px;
     margin-top: 5px;
@@ -414,6 +415,11 @@ a {
 .post-author small {
     display: block;
     margin-bottom: -2px;
+}
+
+.post-image {
+    height: 300px;
+    width: 100%;
 }
 
 .post p {

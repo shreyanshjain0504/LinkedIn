@@ -64,7 +64,12 @@ class ProfileManager {
     }
 
     renderAll() {}
-    saveData(newItem) {}
+    saveData(key, value) {
+        const savedData = localStorage.getItem(key) ? 
+                        JSON.parse(localStorage.getItem(key)) : []
+        savedData.unshift(value)
+        localStorage.setItem('key', JSON.stringify(savedData))
+    }
     handleRemoveItem(e) {}
 }
 
@@ -97,13 +102,6 @@ class ExperienceManager extends ProfileManager {
         });
     }
 
-    saveDataExperience(newExperience) {
-        const experienceArray = localStorage.getItem('experience')
-                                ? JSON.parse(localStorage.getItem('experience')) : [];
-        const newExperienceArray = [newExperience, ...experienceArray];
-        localStorage.setItem('experience', JSON.stringify(newExperienceArray));
-    }
-
     handleExperienceCreation() {
         const sectionBuilder = new ConcreteSectionBuilder();
         const newExperience = sectionBuilder
@@ -115,7 +113,7 @@ class ExperienceManager extends ProfileManager {
             .setTime(Date.now())
             .setType("experience")
             .getSection();
-        this.saveDataExperience(newExperience);
+        this.saveData('experience', newExperience);
         this.renderExperienceAll();
     }
 
@@ -159,13 +157,6 @@ class EducationManager extends ProfileManager {
         });
     }
 
-    saveDataEducation(newEducation) {
-        const educationArray = localStorage.getItem('education')
-                                ? JSON.parse(localStorage.getItem('education')) : [];
-        const newEducationArray = [newEducation, ...educationArray];
-        localStorage.setItem('education', JSON.stringify(newEducationArray));
-    }
-
     handleEducationCreation() {
         const sectionBuilder = new ConcreteSectionBuilder();
         const newEducation = sectionBuilder
@@ -177,7 +168,7 @@ class EducationManager extends ProfileManager {
             .setTime(Date.now())
             .setType("education")
             .getSection();
-        this.saveDataEducation(newEducation);
+        this.saveData('education', newEducation);
         this.renderEducationAll();
     }
 

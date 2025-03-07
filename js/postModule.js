@@ -26,40 +26,42 @@ class PostModule {
         this.renderAllPosts()
     }
     
-    static saveData(newPost) {
-        const postArray = localStorage.getItem('data') 
-                        ? JSON.parse(localStorage.getItem('data')) : []
-        const newPostArray = [...postArray, newPost]
-        localStorage.setItem('data', JSON.stringify(newPostArray));
+    static saveData(key, value) {
+        const postArray = localStorage.getItem(key) 
+                        ? JSON.parse(localStorage.getItem(key)) : []
+        const newPostArray = [...postArray, value]
+        localStorage.setItem(key, JSON.stringify(newPostArray));
     }
     
     createPost() {
         const today = new Date();
-        const formattedToday = formatDate(today)
+        const formatToday = formatDate(today)
+        const formattedToday = formattedDate(today)
         const postContent = document.querySelector('.create-post-input textarea').value;
         const newPost = {
-            postTime: formattedToday,
+            postDate: formatToday,
+            postDateInternal: formattedToday,
             content: postContent,
             author: {
                 name: "Shreyansh Jain",
-                designation: "ASE Intern Tekion"
+                designation: "Intern Tekion"
             }
         };
-        PostModule.saveData(newPost)
+        PostModule.saveData('data', newPost)
         this.renderPost(newPost);  // render just one post 
         document.querySelector('.create-post-input textarea').value = '';
     }
     
     static createPostElement(post = {}) {
         const newDiv = document.createElement('div');
-        newDiv.setAttribute("data-date", post?.postTime);
+        newDiv.setAttribute("data-date", post?.postDateInternal);
         newDiv.innerHTML = `
             <div class="post-author">
                 <img src="images/user-1.png" alt="Author Image">
                 <div>
                     <h1>${post?.author?.name}</h1>
                     <small>${post?.author?.designation}</small>
-                    <small>${post?.postTime}</small>
+                    <small>${post?.postDate}</small>
                 </div>
             </div>
             <p>${post?.content}</p>
