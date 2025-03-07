@@ -20,7 +20,7 @@
     }
     .search-box {
         border-radius: 20px;
-        width: 160px;
+        width: 20vw;
         padding: 5px;
         flex-shrink: 10;
     }
@@ -31,6 +31,21 @@
         width: 25px;
     }
     .nav-profile-img {
-        width: 35px;
+        display: none;
+    }
+    .online {
+        display: none;
+    }
+    .navbar-left > a {
+        padding-left: 4vw;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .navbar-center {
+        display: none;
+    }
+    .search-box {
+        width: 60vw;
     }
 }
